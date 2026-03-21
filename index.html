@@ -1,0 +1,49 @@
+<!--
+PHAR ⇆ ZIP converter in the browser.
+- PHAR → ZIP: manual PHAR parser.
+- ZIP → PHAR: manifest + data + signature.
+Open via file:// or static hosting; libraries load from local files (offline).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert PHAR and ZIP files in your browser-nothing is uploaded to a server.">
+  <title>PHAR ⇆ ZIP Converter</title>
+  <script src="jszip.min.js"></script>
+  <script src="FileSaver.min.js"></script>
+  <script src="pako.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <h1>PHAR ⇆ ZIP Converter</h1>
+    <p class="subtitle">Manual PHAR parsing and building - plain HTML/JS, runs locally in your browser.</p>
+
+    <div class="grid">
+      <section class="panel" aria-labelledby="drop-heading">
+        <h2 id="drop-heading" class="visually-hidden">Drop or choose a file</h2>
+        <div
+          class="dropzone"
+          id="unifiedZone"
+          role="button"
+          tabindex="0"
+          aria-describedby="statusUnified"
+        >
+          <div class="icon" aria-hidden="true">⇅</div>
+          <div><strong>Drop a .phar or .zip - auto-detected</strong></div>
+          <div class="hint">or click to choose</div>
+          <input type="file" id="unifiedInput" accept=".phar,.zip,application/zip,application/x-php" aria-label="Choose a PHAR or ZIP file">
+        </div>
+        <div class="status" id="statusUnified" role="status" aria-live="polite"><span class="label">Status</span> Drop a .phar or .zip to start.</div>
+        <div class="progress" aria-hidden="true"><span id="barUnified"></span></div>
+        <div class="filelist" id="listUnified"></div>
+        <div class="footer" id="footerUnified"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
