@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /unphar/
+
+Sitemap: https://vinasig.github.io/unphar/sitemap.xml

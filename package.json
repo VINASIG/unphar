@@ -1,0 +1,57 @@
+{
+  "name": "@vinasig/unphar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "description": "VINASIG's local PHAR and ZIP converter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VINASIG/unphar.git"
+  },
+  "homepage": "https://vinasig.github.io/unphar/",
+  "bugs": {
+    "url": "https://github.com/VINASIG/unphar/issues"
+  },
+  "engines": {
+    "node": ">=24.21.0 <25"
+  },
+  "packageManager": "npm@12.2.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint archive.js script.js scripts tests types --max-warnings 0",
+    "lint:css": "stylelint style.css tokens.css",
+    "lint:html": "html-validate index.html",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "check:standards": "node scripts/check-standards.ts",
+    "check": "npm run typecheck && npm run lint && npm run lint:css && npm run lint:html && npm run format:check && npm run check:standards",
+    "build": "node scripts/build.ts",
+    "dev": "node scripts/serve.ts",
+    "preview": "node scripts/serve.ts --dist",
+    "test": "node --test tests/*.test.ts",
+    "test:php": "node tests/php.ts",
+    "test:browser": "playwright test",
+    "test:responsive": "playwright test --grep responsive",
+    "test:performance": "node scripts/performance.ts"
+  },
+  "dependencies": {
+    "jszip": "3.10.2",
+    "pako": "3.0.2"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.19.1",
+    "eslint": "10.11.0",
+    "html-validate": "11.16.1",
+    "lighthouse": "13.5.0",
+    "lucide": "1.50.0",
+    "prettier": "3.9.9",
+    "stylelint": "17.16.0",
+    "stylelint-config-standard": "40.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.71.0"
+  }
+}

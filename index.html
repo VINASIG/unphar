@@ -1,55 +1,196 @@
-<!--
-PHAR ⇆ ZIP converter in the browser.
-- PHAR → ZIP: manual PHAR parser.
-- ZIP → PHAR: manifest + data + signature.
-Open via file:// or static hosting; libraries load from local files (offline).
--->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Convert PHAR and ZIP files in your browser-nothing is uploaded to a server.">
-  <meta name="theme-color" content="#f5f5f7">
-  <title>PHAR ⇆ ZIP Converter</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-  <link rel="manifest" href="favicon_io/site.webmanifest">
-  <link rel="shortcut icon" href="favicon_io/favicon.ico">
-  <script src="jszip.min.js"></script>
-  <script src="FileSaver.min.js"></script>
-  <script src="pako.min.js"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="card">
-    <h1>PHAR ⇆ ZIP Converter</h1>
-    <p class="subtitle">Manual PHAR parsing and building - plain HTML/JS, runs locally in your browser.</p>
-
-    <div class="grid">
-      <section class="panel" aria-labelledby="drop-heading">
-        <h2 id="drop-heading" class="visually-hidden">Drop or choose a file</h2>
-        <div
-          class="dropzone"
-          id="unifiedZone"
-          role="button"
-          tabindex="0"
-          aria-describedby="statusUnified"
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Convert PHAR and ZIP archives locally with VINASIG Unphar. Check file integrity and download the result without uploading your archive."
+    />
+    <meta name="theme-color" content="#f7f6f4" />
+    <title>VINASIG Unphar - PHAR and ZIP converter</title>
+    <link rel="canonical" href="https://vinasig.github.io/unphar/" />
+    <meta property="og:title" content="VINASIG Unphar" />
+    <meta
+      property="og:description"
+      content="Convert PHAR and ZIP archives locally in your browser."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vinasig.github.io/unphar/" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" type="image/svg+xml" href="assets/brand/mark.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/brand/favicon-16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/brand/favicon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="assets/brand/favicon-48.png"
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/SpaceGrotesk-VariableFont_wght.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="assets/vendor/jszip.min.js" defer></script>
+    <script src="assets/vendor/pako-inflate.min.js" defer></script>
+    <script src="archive.js" defer></script>
+    <script src="script.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "VINASIG Unphar",
+        "url": "https://vinasig.github.io/unphar/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web browser",
+        "browserRequirements": "JavaScript and Web Crypto enabled",
+        "description": "Convert PHAR and ZIP archives locally in your browser without uploading archive contents."
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to converter</a>
+    <div class="app-shell">
+      <header class="site-header">
+        <a
+          class="brand"
+          href="https://github.com/VINASIG"
+          aria-label="VINASIG on GitHub"
         >
-          <div class="icon" aria-hidden="true">⇅</div>
-          <div><strong>Drop a .phar or .zip - auto-detected</strong></div>
-          <div class="hint">or click to choose</div>
-          <input type="file" id="unifiedInput" accept=".phar,.zip,application/zip,application/x-php" aria-label="Choose a PHAR or ZIP file">
+          <img
+            src="assets/brand/primary-color.svg"
+            width="132"
+            height="32"
+            alt="VINASIG"
+          />
+        </a>
+        <a class="source-link" href="https://github.com/VINASIG/unphar"
+          >View source</a
+        >
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="intro">
+          <h1>Unphar</h1>
+          <p class="lead">Convert PHAR and ZIP files locally.</p>
+          <p>
+            Your archive stays in your browser. Choose one file and download the
+            converted result.
+          </p>
         </div>
-        <div class="status" id="statusUnified" role="status" aria-live="polite"><span class="label">Status</span> Drop a .phar or .zip to start.</div>
-        <div class="progress" aria-hidden="true"><span id="barUnified"></span></div>
-        <div class="filelist" id="listUnified"></div>
-        <div class="footer" id="footerUnified"></div>
-      </section>
+        <section class="converter" aria-labelledby="converter-heading">
+          <h2 id="converter-heading" class="visually-hidden">
+            Archive converter
+          </h2>
+          <button
+            class="dropzone"
+            id="choose-file"
+            type="button"
+            aria-describedby="archive-help"
+          >
+            <svg
+              class="upload-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <path d="m17 8-5-5-5 5"></path>
+              <path d="M12 3v12"></path>
+            </svg>
+            <span class="choose-label">Choose a PHAR or ZIP file</span>
+            <span class="drop-hint">or drop your archive here</span>
+          </button>
+          <input
+            id="archive-input"
+            type="file"
+            accept=".phar,.zip,application/zip,application/octet-stream"
+            aria-label="Choose a PHAR or ZIP file"
+            hidden
+          />
+          <p id="archive-help" class="supporting">
+            Up to 32 MB. PHAR becomes ZIP. ZIP becomes PHAR.
+          </p>
+          <p id="selected-filename" class="filename"></p>
+          <p
+            class="status"
+            id="conversion-status"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            data-state="info"
+          >
+            Choose a .phar or .zip file to start.
+          </p>
+          <progress
+            id="conversion-progress"
+            aria-label="Converting archive"
+            hidden
+          ></progress>
+          <div id="download-result" class="result" hidden>
+            <a id="download-file" class="download-link" href="#" download
+              >Download result</a
+            >
+          </div>
+          <details id="archive-contents" class="archive-contents" hidden>
+            <summary id="contents-summary">Archive contents</summary>
+            <ul id="file-list"></ul>
+          </details>
+        </section>
+        <details class="format-notes">
+          <summary>Supported formats and limits</summary>
+          <div>
+            <p>
+              Native PHAR archives can contain uncompressed or
+              deflate-compressed files. Stored and deflate ZIP files are
+              supported. BZip2, ZIP64, encrypted archives and tar-based PHAR
+              files are not supported.
+            </p>
+            <p>
+              The converter checks file sizes and CRC32. It verifies supported
+              PHAR signatures and creates a SHA-256 signature for new PHAR
+              files. These integrity checks do not establish who created an
+              archive.
+            </p>
+            <p>
+              Conversion preserves file contents and paths. It does not preserve
+              the original PHP stub, alias, serialized metadata, permissions or
+              signature. A new PHAR is a file container, not a replacement
+              executable for the original application.
+            </p>
+            <p>
+              Safe processing limits are 2,000 entries, 16 MB per expanded file
+              and 32 MB of expanded data. Very highly compressed entries are
+              rejected. Empty directories are omitted.
+            </p>
+          </div>
+        </details>
+      </main>
+      <footer class="site-footer">
+        <p>A VINASIG tool. No archive uploads.</p>
+        <a href="https://github.com/VINASIG/unphar/issues">Report an issue</a>
+      </footer>
     </div>
-  </main>
-
-  <script src="script.js" defer></script>
-</body>
+  </body>
 </html>

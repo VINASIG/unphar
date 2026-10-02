@@ -1,0 +1,15 @@
+node_modules/
+dist/
+output/
+.vinasig/
+.agents/
+assets/
+package/
+favicon_io/
+FileSaver.min.js
+jszip.min.js
+pako.min.js
+phar-lib-list.html
+phar_listing.txt
+package-lock.json
+AGENTS.md

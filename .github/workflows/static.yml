@@ -1,43 +1,82 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Verify and deploy Unphar
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: [main]
+  pull_request:
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  verify:
+    name: Verify on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Use pinned Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install locked dependencies
+        run: npx --yes npm@12.2.0 ci
+      - name: Check source and standards
+        run: npx --yes npm@12.2.0 run check
+      - name: Test archive behavior
+        run: npx --yes npm@12.2.0 test
+      - name: Check PHP interoperability
+        if: runner.os == 'Linux'
+        run: npx --yes npm@12.2.0 run test:php
+      - name: Build publication folder
+        run: npx --yes npm@12.2.0 run build
+      - name: Install supported browsers
+        run: npx --yes npm@12.2.0 exec playwright -- install --with-deps chromium firefox webkit
+      - name: Check browser flows and responsive layout
+        run: npx --yes npm@12.2.0 run test:browser
+      - name: Check lab performance budgets
+        if: runner.os == 'Linux'
+        run: npx --yes npm@12.2.0 run test:performance
+      - name: Keep verification evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: verification-${{ matrix.os }}
+          path: |
+            output/checks/
+            output/responsive/
+            output/playwright/
+            output/lighthouse/
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Package checked Pages files
+        if: runner.os == 'Linux' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+
   deploy:
+    name: Deploy checked site
+    needs: verify
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

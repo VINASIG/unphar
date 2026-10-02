@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "sourceCommit": "c9d33c73a89edaf1773fa4d31f1c7258e549b7b1",
+  "manifestSha256": "b4563dbdb123fd86491573bee0867f4cfe08f277ede08ec50bf0745ac0f0fa12",
+  "format": 1,
+  "bundleSha256": "ad5dcbe4601a9a3668d3433330a582e6d780b8f2527e1dcc8cfbb93f8f264870",
+  "repository": "VINASIG/agent-standards",
+  "profile": "web-static"
+}

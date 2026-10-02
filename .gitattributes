@@ -1,0 +1,11 @@
+* text=auto eol=lf
+.agents/** -text
+.vinasig/** -text
+assets/brand/** -text
+assets/fonts/** -text
+assets/licenses/** -text
+assets/fonts/OFL.txt -whitespace
+assets/licenses/phar-js.txt -whitespace
+assets/vendor/** -text
+package/** -text
+*.tgz -text

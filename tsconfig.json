@@ -1,0 +1,12 @@
+{
+  "extends": "./.vinasig/standards/configs/tsconfig-js.json",
+  "compilerOptions": { "types": ["node"], "allowImportingTsExtensions": true },
+  "include": [
+    "archive.js",
+    "script.js",
+    "scripts/**/*.ts",
+    "tests/**/*.ts",
+    "types/**/*.d.ts",
+    "playwright.config.ts"
+  ]
+}
