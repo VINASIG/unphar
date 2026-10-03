@@ -5,9 +5,9 @@ Adopted on 3 October 2026 for VINASIG Unphar. The owner requested organization t
 | Record            | Value                                                              |
 | ----------------- | ------------------------------------------------------------------ |
 | Shared repository | `VINASIG/agent-standards`                                          |
-| Reviewed commit   | `c9d33c73a89edaf1773fa4d31f1c7258e549b7b1`                         |
+| Reviewed commit   | `76901601b193c963b849b253d11f51363b447ffe`                         |
 | Preview version   | `0.1.0`                                                            |
-| Bundle SHA-256    | `ad5dcbe4601a9a3668d3433330a582e6d780b8f2527e1dcc8cfbb93f8f264870` |
+| Bundle SHA-256    | `bb555aad2e5c66da8ba2cdd5530446ca95c1235bb28706cb82066222adcb61f1` |
 | Installed profile | `web-static`                                                       |
 | Managed files     | 37 policy, configuration, schema, template and skill payloads      |
 | Local records     | `.vinasig/manifest.json`, `.vinasig/provenance.json`               |
@@ -21,3 +21,9 @@ Use SI agents and Super Intelligence in new VINASIG-authored copy. This naming c
 PASS means the named check actually ran successfully. FAIL retains a reproduced defect. NOT_RUN identifies unavailable or unexecuted checks. NOT_APPLICABLE requires a scope reason. Source integrity does not establish fresh Codex skill discovery, an independent SI-agent task trial, full accessibility conformance or a live-device result. A fresh trusted Codex session is needed to check runtime skill discovery.
 
 This import creates no global Codex/MCP configuration, credentials, paid accounts, hosted scanners, analytics or organization-wide rules. Update the snapshot through a separately reviewed bundle, not a floating fetch during an agent session. Preserve the managed bytes with `.gitattributes`; do not format `.agents/` or `.vinasig/`.
+
+## Interface rules approved on 3 October 2026
+
+The owner requested this standards update across VINASIG. LANG-004 requires natural punctuation, sentence case and custom list markers in authored interfaces. LANG-005 requires ordinary-reader language and limits parenthetical labels. Required code, URLs, times, regulatory identifiers, official names and user input retain their correct syntax.
+
+WEB-008 requires matching closed and opened dropdown, calendar, color and slider controls. Operating-system popups do not satisfy the requirement. The snapshot includes `templates/web/interface.mjs` for rendered-copy and control regressions. Consumer tests exercise real routes and dynamic states. Visual, keyboard and ordinary-language review remain necessary.
