@@ -228,7 +228,7 @@ test('public metadata and relative assets work at root and project base paths', 
     await expect(page).toHaveTitle('VINASIG Unphar - PHAR and ZIP converter');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      'https://vinasig.github.io/unphar/',
+      'https://unphar.vinasig.io.vn/',
     );
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       'content',

@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /unphar/
+Allow: /
 
-Sitemap: https://vinasig.github.io/unphar/sitemap.xml
+Sitemap: https://unphar.vinasig.io.vn/sitemap.xml

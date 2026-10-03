@@ -6,7 +6,7 @@ Build before `npm run test:browser`. Playwright starts and stops only its own lo
 
 ## Browser matrix
 
-The single product route is `/unphar/`. Relative assets are also checked from root hosting and a local `file://` folder. There are no authentication pages, menus, tabs or modals.
+The single product route is `/` on the canonical unphar.vinasig.io.vn domain. Relative assets are also checked from root hosting and a local `file://` folder. There are no authentication pages, menus, tabs or modals.
 
 - Required viewports are 360×800, 390×844, 768×1024, 1024×768 and 1440×900.
 - Reflow includes 320 CSS px, 440/600/900 intermediate widths, both sides of the actual 480 px breakpoint and additional 767/1023/1439 neighbors.

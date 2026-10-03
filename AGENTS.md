@@ -15,6 +15,10 @@ Read `README.md`, `docs/STANDARDS.md`, `docs/BRAND.md` and `docs/TOOLCHAIN.md` b
 - Publish only the allowlisted `dist/` folder after checks pass. Never publish the whole repository or `output/`. Preserve Git history and review the exact staged diff. Verify pushed HEAD, CI and Pages deployment for the same revision.
 - Read `LICENSE_STATUS.md` before promising reuse rights. Report PASS, FAIL, NOT_RUN or NOT_APPLICABLE with actual evidence. A static standards-integrity check does not prove fresh Codex skill discovery or an independent SI-agent trial.
 
+## Canonical domain
+
+The owner authorized the custom-domain migration on 4 October 2026. Publish this site at https://unphar.vinasig.io.vn/ with an origin-root base. Preserve that domain in canonical/social metadata, sitemap, robots, package homepage, preview and browser assertions. Keep GitHub repository/source links intact. Read docs/DOMAIN.md. GitHub Actions deploys through the repository Pages custom-domain setting; a CNAME file alone does not configure an Actions deployment.
+
 <!-- VINASIG STANDARDS BEGIN -->
 ## VINASIG SI agent standards 0.1.0
 

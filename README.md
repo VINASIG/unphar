@@ -2,7 +2,7 @@
 
 Convert PHAR and ZIP archives locally in your browser. Select or drop one file, wait for integrity checks and download the converted archive. File contents are processed on your device and are never uploaded by this application.
 
-[Open Unphar](https://vinasig.github.io/unphar/) · [Report an issue](https://github.com/VINASIG/unphar/issues)
+[Open Unphar](https://unphar.vinasig.io.vn/) · [Report an issue](https://github.com/VINASIG/unphar/issues)
 
 ## Use the converter
 
@@ -56,6 +56,10 @@ PHP with the Phar and zlib extensions is needed only for the independent interop
 GitHub Actions checks source, unit tests and the built site on Windows and Linux, then runs Chromium, Firefox and WebKit browser tests. Linux also runs PHP interoperability and lab performance budgets. Only a passing push to `main` can deploy the allowlisted `dist/` folder to GitHub Pages. The published site does not include development packages, reference archives or test output.
 
 Pre-existing reference files in `package/`, `phar-1.8.0.tgz`, archive listings, `favicon_io/` and the root legacy library bundles remain in Git history and the source tree. They are not loaded by the current website, installed as application dependencies, or copied to Pages. Their existing external notices remain intact.
+
+## Canonical domain
+
+The public site uses [unphar.vinasig.io.vn](https://unphar.vinasig.io.vn/) at the origin root. GitHub Pages remains the deployment service. [Domain maintenance](docs/DOMAIN.md) records DNS, HTTPS, search submission and verification boundaries.
 
 ## License scopes
 
