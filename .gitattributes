@@ -9,3 +9,17 @@ assets/licenses/phar-js.txt -whitespace
 assets/vendor/** -text
 package/** -text
 *.tgz -text
+
+# Preserve literal standard license text and installed copies.
+LICENSE -text
+LICENSES/** -text
+.vinasig/standards/LICENSE -text
+.vinasig/standards/LICENSES/** -text
+assets/licenses/AGPL-3.0-or-later.txt -text
+assets/licenses/CC-BY-SA-4.0.txt -text
+
+# Publisher license text may end with a blank line. SHA-256 checks protect it.
+LICENSE whitespace=-blank-at-eof
+LICENSES/CC-BY-SA-4.0.txt whitespace=-blank-at-eof
+.vinasig/standards/LICENSES/CC-BY-SA-4.0.txt whitespace=-blank-at-eof
+assets/licenses/CC-BY-SA-4.0.txt whitespace=-blank-at-eof

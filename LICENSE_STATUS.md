@@ -1,9 +1,5 @@
-# Source and asset rights
+# Current license status
 
-No general source-code license has been granted for VINASIG Unphar. The application manifest uses `UNLICENSED` and `private: true` to prevent accidental npm publication. Public repository visibility does not grant an open-source license. The owner can choose a source license separately.
+The owner selected AGPL-3.0-or-later for VINASIG-authored software and CC-BY-SA-4.0 for authored documentation on 4 October 2026. This replaces the earlier pending-license status.
 
-Supplied VINASIG artwork and the VINASIG name retain their rights. This repository does not grant permission to redraw, reuse or redistribute identity assets outside the owner's authorized project. Space Grotesk retains its SIL Open Font License in `assets/fonts/OFL.txt`.
-
-JSZip, pako and Lucide retain their external notices under `assets/licenses/`. Pre-existing phar.js reference material retains its original `package/LICENSE`, README and package metadata. Its license file and package metadata differ; no new interpretation or application-wide grant is inferred from them. See `THIRD_PARTY_NOTICES.md`.
-
-The imported agent-standards preview retains its own rights status. Neither that snapshot nor a third-party license grants a license for this complete project.
+Read [LICENSE](LICENSE), [the material map](LICENSES.md), [VINASIG Brand Usage Policy](BRAND_POLICY.md) and [the dated review](docs/audits/licensing-2026-10-04.md). Fonts, dependency notices and official identity assets keep their separate terms. The npm package remains private to prevent accidental publication, while the source grant is open.

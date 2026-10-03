@@ -7,3 +7,7 @@ Install the pinned Node/npm toolchain and run the commands in `README.md`. New a
 Do not weaken a gate, remove an assertion, raise a budget or approve a broken screenshot to make a change pass. Record an actual blocker as NOT_RUN. Open issue reports with a minimal synthetic fixture or a non-sensitive screenshot; do not publish private archives or credentials. Use the private reporting channel for vulnerabilities.
 
 The existing branch and shared Git history remain intact. Commit, push, pull requests and publication follow the current task's explicit authorization. Public contribution instructions create no new license grant; read `LICENSE_STATUS.md`.
+
+## Contribution licensing
+
+Read [LICENSES.md](LICENSES.md) before submitting material. New contributions use the applicable software, documentation or data scope unless a different compatible license is explicitly identified and accepted. Preserve authorship and third-party notices. Submit only material you have authority to license. This does not require a blanket copyright assignment or grant permission to redesign the official identity assets.

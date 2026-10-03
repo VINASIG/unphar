@@ -13,3 +13,9 @@ phar-lib-list.html
 phar_listing.txt
 package-lock.json
 AGENTS.md
+
+# Standard license texts are verbatim legal documents.
+LICENSE
+LICENSES/
+assets/licenses/AGPL-3.0-or-later.txt
+assets/licenses/CC-BY-SA-4.0.txt

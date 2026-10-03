@@ -56,3 +56,9 @@ PHP with the Phar and zlib extensions is needed only for the independent interop
 GitHub Actions checks source, unit tests and the built site on Windows and Linux, then runs Chromium, Firefox and WebKit browser tests. Linux also runs PHP interoperability and lab performance budgets. Only a passing push to `main` can deploy the allowlisted `dist/` folder to GitHub Pages. The published site does not include development packages, reference archives or test output.
 
 Pre-existing reference files in `package/`, `phar-1.8.0.tgz`, archive listings, `favicon_io/` and the root legacy library bundles remain in Git history and the source tree. They are not loaded by the current website, installed as application dependencies, or copied to Pages. Their existing external notices remain intact.
+
+## License scopes
+
+VINASIG-authored software uses **AGPL-3.0-or-later**. Authored documentation uses **CC-BY-SA-4.0**. Commercial use is allowed under those standard licenses. Fonts and third-party components retain their original terms. Official VINASIG identity assets follow the separate brand policy.
+
+Read [LICENSE](LICENSE), [LICENSES.md](LICENSES.md), [VINASIG Brand Usage Policy](BRAND_POLICY.md) and [the licensing review](docs/audits/licensing-2026-10-04.md) for exact scopes, rationale and remaining review.
