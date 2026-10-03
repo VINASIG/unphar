@@ -51,16 +51,18 @@ summary {
 
 .brand {
   display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
-  padding: 0.5rem;
-  background: white;
-  border-radius: var(--radius-sm);
+  max-width: 100%;
+  min-height: 44px;
 }
 
+.brand picture,
 .brand img {
   display: block;
+  width: 132px;
   max-width: 100%;
-  object-fit: contain;
+  height: auto;
 }
 
 .source-link {

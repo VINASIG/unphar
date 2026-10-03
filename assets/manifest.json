@@ -32,6 +32,14 @@
     "assets/licenses/JSZip.txt": "566c953c6090b1218ca6217dd7359d45dde46581968586dc607d59a78af6a9c4",
     "assets/licenses/Lucide.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
     "assets/licenses/pako.txt": "a04665b3b2de56c66730c1f720f528175739e4104f79073614aa611da1e85539",
-    "assets/licenses/phar-js.txt": "fe7d49020545a2a2e78ebf052ebac630963dc798f2a43ced68c683a320b54ed5"
+    "assets/licenses/phar-js.txt": "fe7d49020545a2a2e78ebf052ebac630963dc798f2a43ced68c683a320b54ed5",
+    "assets/brand/reversed.svg": "98ceaaace06835138856d3710b4fed38714528573f78b19e710db796aea53d07"
+  },
+  "headerLogoReview": {
+    "reviewed": "2026-10-04",
+    "repository": "VINASIG/vinasig-brand-assets",
+    "commit": "83ed7515c81c3b2a28888a75c754e44562d5b107",
+    "source": "01_Logos/Horizontal Lockup/Exports/VINASIG Primary Horizontal Lockup - Reversed.svg",
+    "sha256": "98ceaaace06835138856d3710b4fed38714528573f78b19e710db796aea53d07"
   }
 }
