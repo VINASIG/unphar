@@ -5,9 +5,9 @@ Adopted on 3 October 2026 for VINASIG Unphar. The owner requested organization t
 | Record            | Value                                                              |
 | ----------------- | ------------------------------------------------------------------ |
 | Shared repository | `VINASIG/agent-standards`                                          |
-| Reviewed commit   | `31b105622b1c70f6ad362eaaab429a9afa4b1a18`                         |
+| Reviewed commit   | `59c4b39cfd5f6aa90050da529af1d9894cfe41fb`                         |
 | Preview version   | `0.1.0`                                                            |
-| Bundle SHA-256    | `e7d0fe4b417a782f0613a3367c458e9ff384fed1c43435f76c17252b5c7560e1` |
+| Bundle SHA-256    | `e6cd21c55a61f02466f767029f05a2d23898fed5a6fd386f08f733dcbbbf6439` |
 | Installed profile | `web-static`                                                       |
 | Managed files     | 47 policy, configuration, schema, template and skill payloads      |
 | Local records     | `.vinasig/manifest.json`, `.vinasig/provenance.json`               |
