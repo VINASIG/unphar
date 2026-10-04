@@ -237,6 +237,7 @@ export async function checkLocalization(
         assert.deepEqual(await page.evaluate(() => Object.keys(localStorage)), [
           'vinasig-theme',
         ]);
+        await inspectThemeIcons(page);
         const light = await page.evaluate(
           () => getComputedStyle(document.body).backgroundColor,
         );
