@@ -22,6 +22,7 @@ export async function siteFiles(): Promise<string[]> {
     'preferences.js',
     'preferences.css',
     'style.css',
+    'control-surfaces.css',
     'tokens.css',
     'archive.js',
     'script.js',
