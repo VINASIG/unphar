@@ -20,7 +20,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint archive.js script.js copy.js preferences.js theme-init.js scripts tests types --max-warnings 0",
-    "lint:css": "stylelint style.css tokens.css preferences.css",
+    "lint:css": "stylelint style.css control-surfaces.css tokens.css preferences.css",
     "lint:html": "html-validate index.html vi/index.html",
     "format:check": "prettier --check .",
     "format": "prettier --write .",

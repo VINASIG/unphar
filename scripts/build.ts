@@ -100,9 +100,28 @@ async function verifyDirectory(relative: string): Promise<void> {
 }
 await verifyDirectory('dist');
 const validator = new HtmlValidate(new FileSystemConfigLoader());
+const normalizeBootstrap = (source: string) =>
+  source
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .join('\n')
+    .trim();
+const bootstrap = normalizeBootstrap(
+  (await readLocal(repositoryRoot, 'theme-init.js')).toString('utf8'),
+);
 for (const page of ['index.html', 'vi/index.html']) {
   const report = await validator.validateFile(path.join(dist, page));
   assert(report.valid, JSON.stringify(report.results));
+  const html = (await readLocal(repositoryRoot, `dist/${page}`)).toString(
+    'utf8',
+  );
+  const inline = /<script data-theme-init>([\s\S]*?)<\/script>/.exec(html)?.[1];
+  assert(inline, `Missing inline theme bootstrap in ${page}`);
+  assert.equal(
+    normalizeBootstrap(inline),
+    bootstrap,
+    `Inline theme bootstrap drift in ${page}`,
+  );
 }
 for (const filename of files)
   assert(

@@ -6,6 +6,10 @@ Reviewed on 4 October 2026 for the owner's organization-wide control task.
 
 The converter progress element used an operating-system value skin. It now uses the shared authored progress track and value. The browser fixture holds the real progress element at 50 percent for a visible regression capture. Actual conversion fixtures remain separate and unchanged. The new stylesheet is included in the static build asset list.
 
+The first publication check reproduced six Vietnamese network assertions on Linux. The accessibility audit reloaded the nested CSS import relative to the localized page. The stylesheet now loads through an explicit locale-relative link, avoiding nested requests. The no-request assertion remains unchanged. A separate browser regression requires the direct link, resolved root asset and populated rules in both locales. Stylelint explicitly includes the new stylesheet.
+
+Comparable cold mobile measurements caught a 2,556 ms median LCP after adding the direct stylesheet, above the unchanged 2,500 ms budget. The small existing theme bootstrap now runs inline before the styles paint, eliminating its blocking network request without deferring any interface feature. The build requires both inline copies to match the separately linted `theme-init.js` source. Baseline, failed measurements and final load reports are retained separately in ignored output.
+
 ## Approved standards
 
 The offline installer applied the reviewed bundle from agent-standards commit `00fd107bfc651d4eb9cf7f34cf5e0a9f2ee93ee9`, digest `efe05f654da53716186663ff3186623e521003fbc82eedc624a4c46d0cc8adef`. Installation plans and doctor reports remain under the standards repository's ignored output. The imported owner-instruction block and owned snapshot were updated through that installer. Runtime Codex skill discovery remains NOT_RUN.
@@ -17,6 +21,8 @@ The local production-preview sweep covered 20 Chromium cases over routes `/`, `v
 Screenshots remain in `output/responsive/control-surfaces-2026-10-04/`, separated into immutable before captures, after captures, per-engine state images and forced-colors checks where relevant. The organization matrix and state reports remain in the QR Generator checkout's ignored output. Automated geometry is separate from visual inspection.
 
 The focused interface/progress suite passed 72 cases across three engines. The progress fixture does not upload or convert a real user archive.
+
+The direct-link and inline-bootstrap repair passed all 210 browser cases across Chromium, Firefox and WebKit. Twelve final cold Lighthouse runs covered both locales on mobile and desktop. Median mobile LCP was 2,406 ms in each locale, with zero median CLS and TBT. The original 2,500 ms LCP, 0.1 CLS and 200 ms TBT budgets remain unchanged. Immutable baseline and first failed measurements are retained beside the final reports.
 
 ## Publication and limits
 

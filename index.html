@@ -1,7 +1,22 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script src="theme-init.js"></script>
+    <script data-theme-init>
+      (() => {
+        let saved = null;
+        try {
+          saved = window.localStorage.getItem('vinasig-theme');
+        } catch {
+          /* Preferences remain optional. */
+        }
+        document.documentElement.dataset['theme'] =
+          saved === 'light' || saved === 'dark'
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
@@ -59,6 +74,7 @@
     />
     <link rel="stylesheet" href="tokens.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="control-surfaces.css" />
     <link rel="stylesheet" href="preferences.css" />
     <script src="preferences.js" defer></script>
     <script src="copy.js" defer></script>
