@@ -34,7 +34,7 @@
     'VINASIG Unphar': 'VINASIG Unphar',
     'VINASIG Unphar - PHAR and ZIP converter':
       'VINASIG Unphar - Chuyển đổi PHAR và ZIP',
-    'VINASIG on GitHub': 'VINASIG trên GitHub',
+    'VINASIG home': 'Trang chủ VINASIG',
     'View source': 'Mã nguồn',
     'Your archive stays in your browser. Choose one file and download the converted result.':
       'Tệp chỉ được xử lý trong trình duyệt của bạn. Chọn một tệp rồi tải kết quả chuyển đổi.',
