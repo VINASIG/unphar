@@ -1,4 +1,5 @@
 (() => {
+  const vietnamese = document.documentElement.lang === 'vi';
   /** @template {HTMLElement} T @param {string} id @param {{new (...args: never[]): T}} type @returns {T} */
   function element(id, type) {
     const node = document.getElementById(id);
@@ -22,7 +23,7 @@
   /** @param {string} text @param {'info' | 'success' | 'error'} [kind] */
   function announce(text, kind = 'info') {
     status.dataset['state'] = kind;
-    status.textContent = text;
+    status.textContent = UnpharCopy.translate(text);
   }
   /** @param {File | undefined} file */
   async function handle(file) {
@@ -58,7 +59,9 @@
         item.textContent = name;
         list.append(item);
       }
-      summary.textContent = `Archive contents (${String(result.names.length)} ${result.names.length === 1 ? 'file' : 'files'})`;
+      summary.textContent = vietnamese
+        ? `Nội dung tệp nén - ${String(result.names.length)} tệp`
+        : `Archive contents - ${String(result.names.length)} ${result.names.length === 1 ? 'file' : 'files'}`;
       contents.hidden = false;
       const stem = file.name.replace(/\.(?:phar|zip)$/i, '') || 'archive';
       const outputName = `${stem}.${result.format}`;
@@ -72,10 +75,14 @@
       );
       download.href = objectUrl;
       download.download = outputName;
-      download.textContent = `Download ${result.format.toUpperCase()} again`;
+      download.textContent = vietnamese
+        ? `Tải lại ${result.format.toUpperCase()}`
+        : `Download ${result.format.toUpperCase()} again`;
       output.hidden = false;
       announce(
-        `${outputName} is ready. ${String(result.names.length)} ${result.names.length === 1 ? 'file' : 'files'} checked. Your download will start automatically.`,
+        vietnamese
+          ? `${outputName} đã sẵn sàng. Đã kiểm tra ${String(result.names.length)} tệp. Kết quả sẽ tự động tải xuống.`
+          : `${outputName} is ready. ${String(result.names.length)} ${result.names.length === 1 ? 'file' : 'files'} checked. Your download will start automatically.`,
         'success',
       );
       download.click();

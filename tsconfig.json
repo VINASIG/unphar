@@ -4,6 +4,9 @@
   "include": [
     "archive.js",
     "script.js",
+    "copy.js",
+    "preferences.js",
+    "theme-init.js",
     "scripts/**/*.ts",
     "tests/**/*.ts",
     "types/**/*.d.ts",

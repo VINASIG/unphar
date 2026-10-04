@@ -16,6 +16,11 @@ import {
 export async function siteFiles(): Promise<string[]> {
   const result = [
     'index.html',
+    'vi/index.html',
+    'copy.js',
+    'theme-init.js',
+    'preferences.js',
+    'preferences.css',
     'style.css',
     'tokens.css',
     'archive.js',
@@ -94,8 +99,10 @@ async function verifyDirectory(relative: string): Promise<void> {
 }
 await verifyDirectory('dist');
 const validator = new HtmlValidate(new FileSystemConfigLoader());
-const report = await validator.validateFile(path.join(dist, 'index.html'));
-assert(report.valid, JSON.stringify(report.results));
+for (const page of ['index.html', 'vi/index.html']) {
+  const report = await validator.validateFile(path.join(dist, page));
+  assert(report.valid, JSON.stringify(report.results));
+}
 for (const filename of files)
   assert(
     (await readLocal(repositoryRoot, filename)).equals(

@@ -8,6 +8,9 @@ export default defineConfig(
     files: [
       'archive.js',
       'script.js',
+      'copy.js',
+      'preferences.js',
+      'theme-init.js',
       'scripts/**/*.ts',
       'tests/**/*.ts',
       'types/**/*.d.ts',
@@ -18,6 +21,7 @@ export default defineConfig(
         JSZip: 'readonly',
         pako: 'readonly',
         Unphar: 'readonly',
+        UnpharCopy: 'readonly',
         TextEncoder: 'readonly',
         TextDecoder: 'readonly',
         Blob: 'readonly',

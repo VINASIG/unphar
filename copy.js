@@ -1,0 +1,125 @@
+(() => {
+  /** @type {Readonly<Record<string,string>>} */
+  const dictionary = {
+    'A VINASIG tool. No archive uploads.':
+      'Một công cụ của VINASIG. Không tải tệp lên máy chủ.',
+    'Archive contents': 'Nội dung tệp nén',
+    'Archive converter': 'Công cụ chuyển đổi tệp nén',
+    'Choose a .phar or .zip file to start.':
+      'Chọn tệp .phar hoặc .zip để bắt đầu.',
+    'Choose a PHAR or ZIP file': 'Chọn tệp PHAR hoặc ZIP',
+    'Conversion preserves file contents and paths. It does not preserve the original PHP stub, alias, serialized metadata, permissions or signature. A new PHAR is a file container, not a replacement executable for the original application.':
+      'Việc chuyển đổi giữ nguyên nội dung và đường dẫn tệp. Đoạn khởi chạy PHP, bí danh, siêu dữ liệu đã tuần tự hóa, quyền truy cập và chữ ký gốc không được giữ lại. Tệp PHAR mới là một gói chứa tệp, không thay thế bản thực thi của ứng dụng gốc.',
+    'Convert PHAR and ZIP archives locally in your browser.':
+      'Chuyển đổi tệp nén PHAR và ZIP ngay trong trình duyệt.',
+    'Convert PHAR and ZIP archives locally with VINASIG Unphar. Check file integrity and download the result without uploading your archive.':
+      'Chuyển đổi PHAR và ZIP ngay trên thiết bị với VINASIG Unphar. Kiểm tra tính toàn vẹn và tải kết quả mà không tải tệp lên máy chủ.',
+    'Convert PHAR and ZIP files locally.':
+      'Chuyển đổi PHAR và ZIP ngay trên thiết bị.',
+    'Converting archive': 'Đang chuyển đổi tệp nén',
+    'Download result': 'Tải kết quả',
+    'Native PHAR archives can contain uncompressed or deflate-compressed files. Stored and deflate ZIP files are supported. BZip2, ZIP64, encrypted archives and tar-based PHAR files are not supported.':
+      'Hỗ trợ PHAR dạng gốc với tệp chưa nén hoặc nén deflate, cùng ZIP chưa nén hoặc nén deflate. Không hỗ trợ BZip2, ZIP64, tệp nén có mã hóa hay PHAR dạng tar.',
+    'Report an issue': 'Báo lỗi',
+    'Safe processing limits are 2,000 entries, 16 MB per expanded file and 32 MB of expanded data. Very highly compressed entries are rejected. Empty directories are omitted.':
+      'Giới hạn xử lý là 2.000 mục, 16 MB cho mỗi tệp sau giải nén và 32 MB tổng dữ liệu sau giải nén. Từ chối các mục có tỷ lệ nén quá cao. Bỏ qua thư mục rỗng.',
+    'Skip to converter': 'Đến công cụ chuyển đổi',
+    'Supported formats and limits': 'Định dạng hỗ trợ và giới hạn',
+    'The converter checks file sizes and CRC32. It verifies supported PHAR signatures and creates a SHA-256 signature for new PHAR files. These integrity checks do not establish who created an archive.':
+      'Công cụ kiểm tra kích thước tệp và CRC32, xác minh các chữ ký PHAR được hỗ trợ và tạo chữ ký SHA-256 cho PHAR mới. Các phép kiểm tra này không xác định người tạo tệp.',
+    Unphar: 'Unphar',
+    'Up to 32 MB. PHAR becomes ZIP. ZIP becomes PHAR.':
+      'Tối đa 32 MB. PHAR chuyển thành ZIP. ZIP chuyển thành PHAR.',
+    VINASIG: 'VINASIG',
+    'VINASIG Unphar': 'VINASIG Unphar',
+    'VINASIG Unphar - PHAR and ZIP converter':
+      'VINASIG Unphar - Chuyển đổi PHAR và ZIP',
+    'VINASIG on GitHub': 'VINASIG trên GitHub',
+    'View source': 'Mã nguồn',
+    'Your archive stays in your browser. Choose one file and download the converted result.':
+      'Tệp chỉ được xử lý trong trình duyệt của bạn. Chọn một tệp rồi tải kết quả chuyển đổi.',
+    'or drop your archive here': 'hoặc thả tệp nén vào đây',
+    'Reading and checking your archive...': 'Đang đọc và kiểm tra tệp nén...',
+    'Choose an archive up to 32 MB.': 'Hãy chọn tệp nén tối đa 32 MB.',
+    'This archive could not be converted. Try another file.':
+      'Không chuyển đổi được tệp nén. Hãy thử tệp khác.',
+    'The archive contains an unsafe or unsupported file path.':
+      'Tệp nén chứa đường dẫn không an toàn hoặc không được hỗ trợ.',
+    'The archive is truncated or has an invalid length.':
+      'Tệp nén bị thiếu dữ liệu hoặc có độ dài không hợp lệ.',
+    'This is not a supported native PHAR archive.':
+      'Đây không phải tệp PHAR dạng gốc được hỗ trợ.',
+    'PHAR signatures need a secure browser context. Open this site over HTTPS or on localhost.':
+      'Cần ngữ cảnh trình duyệt an toàn để kiểm tra chữ ký PHAR. Mở website bằng HTTPS hoặc trên localhost.',
+    'The expanded archive exceeds the safe processing limits.':
+      'Dữ liệu sau giải nén vượt giới hạn xử lý an toàn.',
+    'The compressed entry exceeds its declared size.':
+      'Mục nén vượt kích thước đã khai báo.',
+    'The archive deflate data is damaged.': 'Dữ liệu nén deflate bị hỏng.',
+    'An archive file failed its size or CRC32 check.':
+      'Một tệp không đạt kiểm tra kích thước hoặc CRC32.',
+    'The archive exceeds the safe processing limits.':
+      'Tệp nén vượt giới hạn xử lý an toàn.',
+    'The PHAR manifest exceeds its 1 MB format limit.':
+      'Bảng thông tin PHAR vượt giới hạn định dạng 1 MB.',
+    'Choose an archive with 1 to 2,000 files.':
+      'Chọn tệp nén chứa từ 1 đến 2.000 tệp.',
+    'This PHAR API version is not supported.':
+      'Phiên bản API PHAR này không được hỗ trợ.',
+    'Whole-archive compression is not supported.':
+      'Không hỗ trợ nén toàn bộ tệp PHAR.',
+    'The archive contains duplicate file paths.':
+      'Tệp nén chứa đường dẫn trùng nhau.',
+    'Invalid PHAR directory entry.': 'Mục thư mục PHAR không hợp lệ.',
+    'The PHAR manifest length does not match its entries.':
+      'Độ dài bảng thông tin PHAR không khớp các mục.',
+    'The PHAR signature is missing.': 'Tệp PHAR thiếu chữ ký.',
+    'This PHAR signature type is not supported.':
+      'Loại chữ ký PHAR này không được hỗ trợ.',
+    'Invalid PHAR signature length.': 'Độ dài chữ ký PHAR không hợp lệ.',
+    'The PHAR signature does not match its contents.':
+      'Chữ ký PHAR không khớp nội dung.',
+    'The unsigned PHAR contains unexpected trailing data.':
+      'Tệp PHAR không có chữ ký chứa dữ liệu thừa ở cuối.',
+    'BZip2-compressed PHAR files are not supported.':
+      'Không hỗ trợ tệp PHAR nén BZip2.',
+    'This PHAR compression is not supported.':
+      'Kiểu nén PHAR này không được hỗ trợ.',
+    'The archive contains no files.': 'Tệp nén không chứa tệp nào.',
+    'A file has an unsupported timestamp.':
+      'Một tệp có thời điểm không được hỗ trợ.',
+    'The generated PHAR failed verification.':
+      'Tệp PHAR đã tạo không đạt kiểm tra.',
+    'This ZIP is damaged or incomplete.': 'Tệp ZIP bị hỏng hoặc không đầy đủ.',
+    'Split archives and ZIP64 are not supported.':
+      'Không hỗ trợ tệp nén chia phần hay ZIP64.',
+    'Choose an archive with 1 to 2,000 entries.':
+      'Chọn tệp nén chứa từ 1 đến 2.000 mục.',
+    'The ZIP directory has an invalid length.':
+      'Bảng mục lục ZIP có độ dài không hợp lệ.',
+    'The ZIP directory is damaged.': 'Bảng mục lục ZIP bị hỏng.',
+    'Encrypted ZIP files are not supported.': 'Không hỗ trợ tệp ZIP có mã hóa.',
+    'This ZIP compression is not supported.':
+      'Kiểu nén ZIP này không được hỗ trợ.',
+    'The ZIP headers do not match.': 'Các phần đầu ZIP không khớp nhau.',
+    'The ZIP sizes or checksums do not match.':
+      'Kích thước hoặc giá trị kiểm tra ZIP không khớp.',
+    'The ZIP file paths do not match.': 'Các đường dẫn tệp ZIP không khớp.',
+    'ZIP file data overlaps its directory.':
+      'Dữ liệu tệp ZIP chồng lên bảng mục lục.',
+    'The ZIP entry count does not match its directory.':
+      'Số mục ZIP không khớp bảng mục lục.',
+    'Invalid ZIP directory entry.': 'Mục trong bảng mục lục ZIP không hợp lệ.',
+    'Language and appearance': 'Ngôn ngữ và giao diện',
+    'Switch between light and dark themes': 'Đổi giao diện sáng hoặc tối',
+  };
+  Object.defineProperty(globalThis, 'UnpharCopy', {
+    value: Object.freeze({
+      /** @param {string} value */ translate(value) {
+        return document.documentElement.lang === 'vi'
+          ? (dictionary[value] ?? value)
+          : value;
+      },
+    }),
+  });
+})();

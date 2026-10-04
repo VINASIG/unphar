@@ -29,3 +29,9 @@ PHP interoperability runs against an actual PHP CLI with Phar and zlib extension
 Lighthouse 13.5.0's transitive trace type declarations contain an `exactOptionalPropertyTypes` incompatibility. The local driver validates the pinned external runtime boundary and parses report fields as unknown data. The project retains declaration checking and strict source checks; no `skipLibCheck` or blanket linter suppression is introduced.
 
 FontTools 4.66.1 and Brotli 1.2.0 were checked from official PyPI on the same date and installed only in ignored local tooling to create the WOFF2 container. Normal development and CI use its reviewed committed bytes and need no Python/font compiler. Retain the original TTF and OFL, verify glyph/weight/name preservation and update the asset digest when regenerating the container.
+
+## Bilingual regression
+
+Read docs/LOCALIZATION.md. Language and appearance regression tests run through the existing browser command. They cover both built locales, native navigation without scripts, metadata, localized guidance, keyboard controls, theme persistence and blocked storage. Authored textarea guidance is translated while its content remains literal. The original core and responsive assertions remain enabled.
+
+The existing performance command measures both Vietnamese and English. Each locale keeps separate mobile and desktop reports, using the same configured runs and budgets. Lab results do not establish field interaction latency.

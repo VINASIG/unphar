@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
-    <script src="theme-init.js"></script>
+    <script src="../theme-init.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Convert PHAR and ZIP archives locally with VINASIG Unphar. Check file integrity and download the result without uploading your archive."
+      content="Chuyển đổi PHAR và ZIP ngay trên thiết bị với VINASIG Unphar. Kiểm tra tính toàn vẹn và tải kết quả mà không tải tệp lên máy chủ."
     />
     <meta name="theme-color" content="#f7f6f4" />
-    <title>VINASIG Unphar - PHAR and ZIP converter</title>
-    <link rel="canonical" href="https://unphar.vinasig.io.vn/" />
+    <title>VINASIG Unphar - Chuyển đổi PHAR và ZIP</title>
+    <link rel="canonical" href="https://unphar.vinasig.io.vn/vi/" />
     <link rel="alternate" hreflang="en" href="https://unphar.vinasig.io.vn/" />
     <link
       rel="alternate"
@@ -22,77 +22,77 @@
       hreflang="x-default"
       href="https://unphar.vinasig.io.vn/"
     />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="vi_VN" />
     <meta property="og:title" content="VINASIG Unphar" />
     <meta
       property="og:description"
-      content="Convert PHAR and ZIP archives locally in your browser."
+      content="Chuyển đổi tệp nén PHAR và ZIP ngay trong trình duyệt."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://unphar.vinasig.io.vn/" />
+    <meta property="og:url" content="https://unphar.vinasig.io.vn/vi/" />
     <meta name="twitter:card" content="summary" />
-    <link rel="icon" type="image/svg+xml" href="assets/brand/mark.svg" />
+    <link rel="icon" type="image/svg+xml" href="../assets/brand/mark.svg" />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="assets/brand/favicon-16.png"
+      href="../assets/brand/favicon-16.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="assets/brand/favicon-32.png"
+      href="../assets/brand/favicon-32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="48x48"
-      href="assets/brand/favicon-48.png"
+      href="../assets/brand/favicon-48.png"
     />
     <link
       rel="preload"
-      href="assets/fonts/SpaceGrotesk-VariableFont_wght.woff2"
+      href="../assets/fonts/SpaceGrotesk-VariableFont_wght.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
-    <link rel="stylesheet" href="tokens.css" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="preferences.css" />
-    <script src="preferences.js" defer></script>
-    <script src="copy.js" defer></script>
-    <script src="assets/vendor/jszip.min.js" defer></script>
-    <script src="assets/vendor/pako-inflate.min.js" defer></script>
-    <script src="archive.js" defer></script>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="../tokens.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../preferences.css" />
+    <script src="../preferences.js" defer></script>
+    <script src="../copy.js" defer></script>
+    <script src="../assets/vendor/jszip.min.js" defer></script>
+    <script src="../assets/vendor/pako-inflate.min.js" defer></script>
+    <script src="../archive.js" defer></script>
+    <script src="../script.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "VINASIG Unphar",
-        "inLanguage": "en",
-        "url": "https://unphar.vinasig.io.vn/",
+        "inLanguage": "vi",
+        "url": "https://unphar.vinasig.io.vn/vi/",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Web browser",
         "browserRequirements": "JavaScript and Web Crypto enabled",
-        "description": "Convert PHAR and ZIP archives locally in your browser without uploading archive contents."
+        "description": "Chuyển đổi tệp PHAR và ZIP ngay trong trình duyệt mà không tải nội dung lên máy chủ."
       }
     </script>
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to converter</a>
+    <a class="skip-link" href="#main">Đến công cụ chuyển đổi</a>
     <div class="app-shell">
       <header class="site-header">
         <a
           class="brand"
           href="https://github.com/VINASIG"
-          aria-label="VINASIG on GitHub"
+          aria-label="VINASIG trên GitHub"
           data-brand-logo
           ><picture
             ><source
               media="(prefers-color-scheme: dark)"
-              srcset="assets/brand/reversed.svg" />
+              srcset="../assets/brand/reversed.svg" />
             <script>
               document.currentScript?.previousElementSibling?.setAttribute(
                 'media',
@@ -102,21 +102,21 @@
               );
             </script>
             <img
-              src="assets/brand/primary-color.svg"
+              src="../assets/brand/primary-color.svg"
               width="540"
               height="140"
               alt="VINASIG" /></picture
         ></a>
         <div class="header-actions">
           <a class="source-link" href="https://github.com/VINASIG/unphar"
-            >View source</a
+            >Mã nguồn</a
           >
-          <nav class="site-preferences" aria-label="Language and appearance">
+          <nav class="site-preferences" aria-label="Ngôn ngữ và giao diện">
             <button
               class="theme-switch"
               type="button"
               data-theme-toggle
-              aria-label="Switch between light and dark themes"
+              aria-label="Đổi giao diện sáng hoặc tối"
               aria-pressed="false"
               disabled
             >
@@ -124,11 +124,12 @@
             </button>
             <a
               class="language-switch"
-              href="vi/"
-              hreflang="vi"
-              aria-label="Read this page in Vietnamese"
+              href="../"
+              hreflang="en"
+              lang="vi"
+              aria-label="Đọc trang này bằng tiếng Anh"
               data-copy-notation="ISO 639-1 language code"
-              >VI</a
+              >EN</a
             >
           </nav>
         </div>
@@ -136,15 +137,15 @@
       <main id="main" tabindex="-1">
         <div class="intro">
           <h1>Unphar</h1>
-          <p class="lead">Convert PHAR and ZIP files locally.</p>
+          <p class="lead">Chuyển đổi PHAR và ZIP ngay trên thiết bị.</p>
           <p>
-            Your archive stays in your browser. Choose one file and download the
-            converted result.
+            Tệp chỉ được xử lý trong trình duyệt của bạn. Chọn một tệp rồi tải
+            kết quả chuyển đổi.
           </p>
         </div>
         <section class="converter" aria-labelledby="converter-heading">
           <h2 id="converter-heading" class="visually-hidden">
-            Archive converter
+            Công cụ chuyển đổi tệp nén
           </h2>
           <button
             class="dropzone"
@@ -169,18 +170,18 @@
               <path d="m17 8-5-5-5 5"></path>
               <path d="M12 3v12"></path>
             </svg>
-            <span class="choose-label">Choose a PHAR or ZIP file</span>
-            <span class="drop-hint">or drop your archive here</span>
+            <span class="choose-label">Chọn tệp PHAR hoặc ZIP</span>
+            <span class="drop-hint">hoặc thả tệp nén vào đây</span>
           </button>
           <input
             id="archive-input"
             type="file"
             accept=".phar,.zip,application/zip,application/octet-stream"
-            aria-label="Choose a PHAR or ZIP file"
+            aria-label="Chọn tệp PHAR hoặc ZIP"
             hidden
           />
           <p id="archive-help" class="supporting">
-            Up to 32 MB. PHAR becomes ZIP. ZIP becomes PHAR.
+            Tối đa 32 MB. PHAR chuyển thành ZIP. ZIP chuyển thành PHAR.
           </p>
           <p id="selected-filename" class="filename" data-user-content></p>
           <p
@@ -191,55 +192,53 @@
             aria-atomic="true"
             data-state="info"
           >
-            Choose a .phar or .zip file to start.
+            Chọn tệp .phar hoặc .zip để bắt đầu.
           </p>
           <progress
             id="conversion-progress"
-            aria-label="Converting archive"
+            aria-label="Đang chuyển đổi tệp nén"
             hidden
           ></progress>
           <div id="download-result" class="result" hidden>
             <a id="download-file" class="download-link" href="#" download
-              >Download result</a
+              >Tải kết quả</a
             >
           </div>
           <details id="archive-contents" class="archive-contents" hidden>
-            <summary id="contents-summary">Archive contents</summary>
+            <summary id="contents-summary">Nội dung tệp nén</summary>
             <ul id="file-list" data-user-content></ul>
           </details>
         </section>
         <details class="format-notes">
-          <summary>Supported formats and limits</summary>
+          <summary>Định dạng hỗ trợ và giới hạn</summary>
           <div>
             <p>
-              Native PHAR archives can contain uncompressed or
-              deflate-compressed files. Stored and deflate ZIP files are
-              supported. BZip2, ZIP64, encrypted archives and tar-based PHAR
-              files are not supported.
+              Hỗ trợ PHAR dạng gốc với tệp chưa nén hoặc nén deflate, cùng ZIP
+              chưa nén hoặc nén deflate. Không hỗ trợ BZip2, ZIP64, tệp nén có
+              mã hóa hay PHAR dạng tar.
             </p>
             <p>
-              The converter checks file sizes and CRC32. It verifies supported
-              PHAR signatures and creates a SHA-256 signature for new PHAR
-              files. These integrity checks do not establish who created an
-              archive.
+              Công cụ kiểm tra kích thước tệp và CRC32, xác minh các chữ ký PHAR
+              được hỗ trợ và tạo chữ ký SHA-256 cho PHAR mới. Các phép kiểm tra
+              này không xác định người tạo tệp.
             </p>
             <p>
-              Conversion preserves file contents and paths. It does not preserve
-              the original PHP stub, alias, serialized metadata, permissions or
-              signature. A new PHAR is a file container, not a replacement
-              executable for the original application.
+              Việc chuyển đổi giữ nguyên nội dung và đường dẫn tệp. Đoạn khởi
+              chạy PHP, bí danh, siêu dữ liệu đã tuần tự hóa, quyền truy cập và
+              chữ ký gốc không được giữ lại. Tệp PHAR mới là một gói chứa tệp,
+              không thay thế bản thực thi của ứng dụng gốc.
             </p>
             <p>
-              Safe processing limits are 2,000 entries, 16 MB per expanded file
-              and 32 MB of expanded data. Very highly compressed entries are
-              rejected. Empty directories are omitted.
+              Giới hạn xử lý là 2.000 mục, 16 MB cho mỗi tệp sau giải nén và 32
+              MB tổng dữ liệu sau giải nén. Từ chối các mục có tỷ lệ nén quá
+              cao. Bỏ qua thư mục rỗng.
             </p>
           </div>
         </details>
       </main>
       <footer class="site-footer">
-        <p>A VINASIG tool. No archive uploads.</p>
-        <a href="https://github.com/VINASIG/unphar/issues">Report an issue</a>
+        <p>Một công cụ của VINASIG. Không tải tệp lên máy chủ.</p>
+        <a href="https://github.com/VINASIG/unphar/issues">Báo lỗi</a>
       </footer>
     </div>
   </body>

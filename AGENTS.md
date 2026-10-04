@@ -3,7 +3,7 @@
 Read `README.md`, `docs/STANDARDS.md`, `docs/BRAND.md` and `docs/TOOLCHAIN.md` before changing this static browser application.
 
 - Preserve unrelated changes and use the existing branch. Commit, push and publish within the user's current authorization.
-- Keep public product copy, source, technical documentation and commit subjects in English. Answer Vietnamese users in Vietnamese. Use SI agents and Super Intelligence in new VINASIG copy, while preserving official external names and identifiers.
+- Keep public product copy in reviewed Vietnamese and English. Keep source, technical documentation and commit subjects in English. Answer Vietnamese users in Vietnamese. Use SI agents and Super Intelligence in new VINASIG copy, while preserving official external names and identifiers.
 - Keep plain HTML/CSS/JavaScript and local-only archive processing. Do not add a framework, upload service, account flow, analytics or remote font for routine changes.
 - Use local Space Grotesk, Lucide for interface SVGs and Simple Icons only for needed third-party brand marks. Preserve supplied VINASIG artwork and third-party notices. This product adopts the design system's Bright Playful Minimalism proposal; it does not approve every draft for the organization.
 - Keep both PHAR-to-ZIP and ZIP-to-PHAR flows usable by keyboard and touch. Native details show format limitations and archive contents. Fix wrapping and intrinsic sizing at their source; never conceal page overflow.
@@ -18,6 +18,10 @@ Read `README.md`, `docs/STANDARDS.md`, `docs/BRAND.md` and `docs/TOOLCHAIN.md` b
 ## Canonical domain
 
 The owner authorized the custom-domain migration on 4 October 2026. Publish this site at https://unphar.vinasig.io.vn/ with an origin-root base. Preserve that domain in canonical/social metadata, sitemap, robots, package homepage, preview and browser assertions. Keep GitHub repository/source links intact. Read docs/DOMAIN.md. GitHub Actions deploys through the repository Pages custom-domain setting; a CNAME file alone does not configure an Actions deployment.
+
+## Language and appearance
+
+Read `docs/LOCALIZATION.md`. Both locales must include navigation, accessible names, validation, loading and result copy. Keep native reciprocal language links and locale metadata. Preserve technical identifiers, code and user content. Only the optional light or dark preference uses `vinasig-theme` storage. Never save or send measurements, files or generator content. Verify both locales and themes before publishing.
 
 <!-- VINASIG STANDARDS BEGIN -->
 ## VINASIG SI agent standards 0.1.0
