@@ -1,9 +1,9 @@
 {
-  "version": "0.1.0",
-  "sourceCommit": "00fd107bfc651d4eb9cf7f34cf5e0a9f2ee93ee9",
-  "manifestSha256": "b41f29e25416206028ed0e12c0c850cdafcc2f91e5e8e08dbb037a016b6b4cc3",
   "format": 1,
-  "bundleSha256": "efe05f654da53716186663ff3186623e521003fbc82eedc624a4c46d0cc8adef",
   "repository": "VINASIG/agent-standards",
-  "profile": "web-static"
+  "sourceCommit": "2027d64b7af235b23a8b4bfa4911c924ffb47d05",
+  "version": "0.1.0",
+  "profile": "web-static",
+  "bundleSha256": "a07cd4c250aa2ba476e2978d0fdc30b144f80fac0dc0b7939e09b73d87b4a067",
+  "manifestSha256": "a6faf730de10c517a0dcab23dadf59dcec339aaaed6c503a66e87c9eac284b49"
 }
