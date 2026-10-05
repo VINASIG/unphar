@@ -112,6 +112,9 @@
     'Invalid ZIP directory entry.': 'Mục trong bảng mục lục ZIP không hợp lệ.',
     'Language and appearance': 'Ngôn ngữ và giao diện',
     'Switch between light and dark themes': 'Đổi giao diện sáng hoặc tối',
+    'Source code': 'Mã nguồn',
+    Licenses: 'Giấy phép',
+    'Website information': 'Thông tin website',
   };
   Object.defineProperty(globalThis, 'UnpharCopy', {
     value: Object.freeze({

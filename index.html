@@ -76,6 +76,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="control-surfaces.css" />
     <link rel="stylesheet" href="preferences.css" />
+    <link rel="stylesheet" href="site-chrome.css" />
     <script src="preferences.js" defer></script>
     <script src="copy.js" defer></script>
     <script src="assets/vendor/jszip.min.js" defer></script>
@@ -98,8 +99,8 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to converter</a>
-    <div class="app-shell">
-      <header class="site-header">
+    <div class="app-shell" data-site-shell>
+      <header class="site-header" data-site-header>
         <a
           class="brand"
           href="https://vinasig.io.vn/"
@@ -124,9 +125,6 @@
               alt="VINASIG" /></picture
         ></a>
         <div class="header-actions">
-          <a class="source-link" href="https://github.com/VINASIG/unphar"
-            >View source</a
-          >
           <nav class="site-preferences" aria-label="Language and appearance">
             <button
               class="theme-switch"
@@ -291,9 +289,20 @@
           </div>
         </details>
       </main>
-      <footer class="site-footer">
-        <p>A VINASIG tool. No archive uploads.</p>
-        <a href="https://github.com/VINASIG/unphar/issues">Report an issue</a>
+      <footer class="site-footer" data-site-footer>
+        <a
+          class="footer-home"
+          href="https://vinasig.io.vn/"
+          aria-label="VINASIG home"
+          >VINASIG</a
+        >
+        <nav class="footer-links" aria-label="Website information">
+          <a href="https://github.com/VINASIG/unphar" data-source-link
+            >Source code</a
+          >
+          <a href="https://github.com/VINASIG/unphar/issues">Report an issue</a>
+          <a href="assets/licenses/NOTICE.txt">Licenses</a>
+        </nav>
       </footer>
     </div>
   </body>

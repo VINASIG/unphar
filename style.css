@@ -37,6 +37,8 @@ summary {
 }
 
 .app-shell {
+  --site-content-width: 48rem;
+
   width: min(100% - 3rem, 48rem);
   margin-inline: auto;
 }

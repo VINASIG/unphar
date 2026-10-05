@@ -68,5 +68,8 @@
   "The ZIP entry count does not match its directory.": "Số mục ZIP không khớp bảng mục lục.",
   "Invalid ZIP directory entry.": "Mục trong bảng mục lục ZIP không hợp lệ.",
   "Language and appearance": "Ngôn ngữ và giao diện",
-  "Switch between light and dark themes": "Đổi giao diện sáng hoặc tối"
+  "Switch between light and dark themes": "Đổi giao diện sáng hoặc tối",
+  "Source code": "Mã nguồn",
+  "Licenses": "Giấy phép",
+  "Website information": "Thông tin website"
 }

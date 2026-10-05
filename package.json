@@ -20,7 +20,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint archive.js script.js copy.js preferences.js theme-init.js scripts tests types --max-warnings 0",
-    "lint:css": "stylelint style.css control-surfaces.css tokens.css preferences.css",
+    "lint:css": "stylelint site-chrome.css style.css control-surfaces.css tokens.css preferences.css",
     "lint:html": "html-validate index.html vi/index.html",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
@@ -33,10 +33,11 @@
     "preview": "node scripts/serve.ts --dist",
     "test": "node --test tests/*.test.ts",
     "test:php": "node tests/php.ts",
-    "test:browser": "playwright test",
+    "test:browser": "npm run test:chrome && playwright test",
     "test:responsive": "playwright test --grep responsive",
     "test:performance": "node scripts/performance.ts && node scripts/performance.ts --vietnamese",
-    "check:licenses": "node .vinasig/standards/templates/check-licenses.mjs"
+    "check:licenses": "node .vinasig/standards/templates/check-licenses.mjs",
+    "test:chrome": "node tests/site-chrome.ts"
   },
   "dependencies": {
     "jszip": "3.10.2",

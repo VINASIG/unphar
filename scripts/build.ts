@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
-import { mkdir, readdir, copyFile } from 'node:fs/promises';
+import { mkdir, readdir, copyFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FileSystemConfigLoader, HtmlValidate } from 'html-validate';
+import { inlineSiteChrome } from './site-styles.ts';
 import {
   digest,
   parseJson,
@@ -22,6 +23,7 @@ export async function siteFiles(): Promise<string[]> {
     'preferences.js',
     'preferences.css',
     'style.css',
+    'site-chrome.css',
     'control-surfaces.css',
     'tokens.css',
     'archive.js',
@@ -79,10 +81,24 @@ for (const name of ['jszip', 'pako']) {
 }
 const dist = await localPath(repositoryRoot, 'dist', true);
 await mkdir(dist, { recursive: true });
+const sharedChrome = (
+  await readLocal(repositoryRoot, 'site-chrome.css')
+).toString('utf8');
+const publicationBytes = async (filename: string): Promise<Buffer> => {
+  const bytes = await readLocal(repositoryRoot, filename);
+  return filename === 'index.html' || filename === 'vi/index.html'
+    ? Buffer.from(
+        inlineSiteChrome(bytes.toString('utf8'), sharedChrome),
+        'utf8',
+      )
+    : bytes;
+};
 for (const filename of files) {
   const target = await localPath(repositoryRoot, `dist/${filename}`, true);
   await mkdir(path.dirname(target), { recursive: true });
-  await copyFile(await localPath(repositoryRoot, filename), target);
+  if (filename === 'index.html' || filename === 'vi/index.html')
+    await writeFile(target, await publicationBytes(filename));
+  else await copyFile(await localPath(repositoryRoot, filename), target);
 }
 // A whitelist keeps source archives, development packages and agent backups off Pages.
 async function verifyDirectory(relative: string): Promise<void> {
@@ -125,7 +141,7 @@ for (const page of ['index.html', 'vi/index.html']) {
 }
 for (const filename of files)
   assert(
-    (await readLocal(repositoryRoot, filename)).equals(
+    (await publicationBytes(filename)).equals(
       await readLocal(repositoryRoot, `dist/${filename}`),
     ),
     `Build changed ${filename}`,
