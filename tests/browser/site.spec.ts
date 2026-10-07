@@ -6,6 +6,7 @@ import { test, expect } from '@playwright/test';
 import type { Page, TestInfo } from '@playwright/test';
 import { AxeBuilder } from '@axe-core/playwright';
 import { startServer } from '../../scripts/serve.ts';
+import { minifyPublicationSource } from '../../scripts/site-styles.ts';
 import { api, zipFixture } from '../setup.ts';
 
 let app: Awaited<ReturnType<typeof startServer>>;
@@ -220,41 +221,48 @@ for (const viewport of [
       });
     }
 
-test('control styles load directly in both locales without nested requests', async ({
+test('all reviewed control styles load in both locales without extra CSS requests', async ({
   page,
 }) => {
+  const expectedStyles = await minifyPublicationSource(
+    await readFile(path.resolve('control-surfaces.css'), 'utf8'),
+    'css',
+  );
   for (const route of ['', 'vi/']) {
+    const requests: string[] = [];
+    const record = (request: { url(): string }) => requests.push(request.url());
+    page.on('request', record);
     await page.goto(new URL(route, app.url).href);
     const stylesheet = page.locator(
-      'link[rel="stylesheet"][href$="control-surfaces.css"]',
+      'style[data-publication-style="control-surfaces.css"]',
     );
     await expect(stylesheet).toHaveCount(1);
-    await expect(stylesheet).toHaveAttribute(
-      'href',
-      route ? '../control-surfaces.css' : 'control-surfaces.css',
-    );
     const loaded = await stylesheet.evaluate((element) => {
-      if (!(element instanceof HTMLLinkElement) || !element.sheet)
+      if (!(element instanceof HTMLStyleElement) || !element.sheet)
         throw new Error('Missing loaded control stylesheet');
       const rules = [...element.sheet.cssRules];
       return {
-        href: element.href,
         count: rules.length,
         nested: rules.some((rule) => rule instanceof CSSImportRule),
       };
     });
-    expect(loaded.href).toBe(new URL('control-surfaces.css', app.url).href);
     expect(loaded.count).toBeGreaterThan(0);
     expect(loaded.nested).toBe(false);
+    expect(await stylesheet.textContent()).toBe('\n' + expectedStyles);
+    await expect(page.locator('link[rel="stylesheet"]')).toHaveCount(0);
+    await expect(page.locator('script[src$="preferences.js"]')).toHaveCount(0);
+    await expect(page.locator('script[data-theme-init]')).toHaveCount(1);
+    await expect(page.locator('html')).toHaveAttribute(
+      'data-preferences-ready',
+      'true',
+    );
     expect(
-      await page.locator('link[href$="style.css"]').evaluate((element) => {
-        if (!(element instanceof HTMLLinkElement) || !element.sheet)
-          throw new Error('Missing loaded main stylesheet');
-        return [...element.sheet.cssRules].some(
-          (rule) => rule instanceof CSSImportRule,
-        );
-      }),
-    ).toBe(false);
+      requests.filter((url) => new URL(url).pathname.endsWith('.css')),
+    ).toEqual([]);
+    expect(
+      requests.filter((url) => new URL(url).pathname.endsWith('.woff2')),
+    ).toHaveLength(1);
+    page.off('request', record);
   }
 });
 

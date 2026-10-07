@@ -2,7 +2,14 @@ import assert from 'node:assert/strict';
 import { mkdir, readdir, copyFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FileSystemConfigLoader, HtmlValidate } from 'html-validate';
-import { inlineSiteChrome } from './site-styles.ts';
+import { version as compilerVersion } from 'esbuild';
+import {
+  preparePublicationHtml,
+  publicationStyles,
+  publicationScripts,
+  minifyPublicationSource,
+  normalizeBootstrap,
+} from './site-styles.ts';
 import {
   digest,
   parseJson,
@@ -47,6 +54,15 @@ export async function siteFiles(): Promise<string[]> {
 }
 
 const files = await siteFiles();
+assert.equal(
+  compilerVersion,
+  record(
+    record(parseJson(await readLocal(repositoryRoot, 'package.json')))[
+      'devDependencies'
+    ],
+  )['esbuild'],
+  'Compiler version drift',
+);
 const assets = record(
   parseJson(await readLocal(repositoryRoot, 'assets/manifest.json')),
 );
@@ -81,22 +97,44 @@ for (const name of ['jszip', 'pako']) {
 }
 const dist = await localPath(repositoryRoot, 'dist', true);
 await mkdir(dist, { recursive: true });
-const sharedChrome = (
-  await readLocal(repositoryRoot, 'site-chrome.css')
-).toString('utf8');
+const styleSources = Object.fromEntries(
+  await Promise.all(
+    publicationStyles.map(async (filename) => [
+      filename,
+      (await readLocal(repositoryRoot, filename)).toString('utf8'),
+    ]),
+  ),
+) as Record<(typeof publicationStyles)[number], string>;
+const bootstrap = (await readLocal(repositoryRoot, 'theme-init.js')).toString(
+  'utf8',
+);
 const publicationBytes = async (filename: string): Promise<Buffer> => {
   const bytes = await readLocal(repositoryRoot, filename);
-  return filename === 'index.html' || filename === 'vi/index.html'
-    ? Buffer.from(
-        inlineSiteChrome(bytes.toString('utf8'), sharedChrome),
-        'utf8',
-      )
-    : bytes;
+  if (filename === 'index.html' || filename === 'vi/index.html')
+    return Buffer.from(
+      await preparePublicationHtml(
+        bytes.toString('utf8'),
+        styleSources,
+        filename === 'vi/index.html' ? '../' : '',
+        bootstrap,
+      ),
+      'utf8',
+    );
+  if (publicationScripts.some((script) => script === filename))
+    return Buffer.from(
+      await minifyPublicationSource(bytes.toString('utf8'), 'js'),
+      'utf8',
+    );
+  return bytes;
 };
 for (const filename of files) {
   const target = await localPath(repositoryRoot, `dist/${filename}`, true);
   await mkdir(path.dirname(target), { recursive: true });
-  if (filename === 'index.html' || filename === 'vi/index.html')
+  if (
+    filename === 'index.html' ||
+    filename === 'vi/index.html' ||
+    publicationScripts.some((script) => script === filename)
+  )
     await writeFile(target, await publicationBytes(filename));
   else await copyFile(await localPath(repositoryRoot, filename), target);
 }
@@ -116,14 +154,8 @@ async function verifyDirectory(relative: string): Promise<void> {
 }
 await verifyDirectory('dist');
 const validator = new HtmlValidate(new FileSystemConfigLoader());
-const normalizeBootstrap = (source: string) =>
-  source
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .join('\n')
-    .trim();
-const bootstrap = normalizeBootstrap(
-  (await readLocal(repositoryRoot, 'theme-init.js')).toString('utf8'),
+const compiledBootstrap = normalizeBootstrap(
+  await minifyPublicationSource(bootstrap, 'js'),
 );
 for (const page of ['index.html', 'vi/index.html']) {
   const report = await validator.validateFile(path.join(dist, page));
@@ -135,7 +167,7 @@ for (const page of ['index.html', 'vi/index.html']) {
   assert(inline, `Missing inline theme bootstrap in ${page}`);
   assert.equal(
     normalizeBootstrap(inline),
-    bootstrap,
+    compiledBootstrap,
     `Inline theme bootstrap drift in ${page}`,
   );
 }

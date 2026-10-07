@@ -22,6 +22,8 @@ pako 3 supplies its own TypeScript definitions. The deprecated `@types/pako` stu
 
 Classic browser scripts retain `file://` compatibility without a module fetch, bundler or application server. Development scripts use Node's TypeScript stripping; TypeScript separately checks all applicable source. The production build copies an explicit file list and rejects unexpected files in `dist/`. It does not publish the entire repository.
 
+On 7 October 2026, esbuild **0.28.2** was selected as an exact development-only minifier after checking the current official registry, Node compatibility and MIT license. The build embeds the reviewed CSS and compiles the head preference runtime and three project-owned classic scripts with fixed browser targets. Asset/vendor bytes and readable source remain unchanged. See [the dated selection, failed experiments and publication checks](audits/shared-preferences-build-2026-10-07.md). Existing lock entries are unchanged; no compiler code is fetched or executed by the website.
+
 Vendor refreshes must copy the matching pinned package files, retain notices and review `assets/manifest.json` digests. A package upgrade without a reviewed vendor refresh fails the asset/version check. Dependabot proposes weekly npm and action updates; it does not automatically merge them. CI actions use reviewed commit SHAs.
 
 PHP interoperability runs against an actual PHP CLI with Phar and zlib extensions. The test records its detected version and uses process-specific fixture flags. CI uses its available PHP CLI on Linux and fails if the fixture test cannot run. Physical devices, assistive technology, field vitals and external search dashboards require their own evidence; they are not implied by this toolchain.
