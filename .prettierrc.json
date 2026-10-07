@@ -1,1 +1,19 @@
-{ "singleQuote": true, "trailingComma": "all", "proseWrap": "preserve" }
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "proseWrap": "preserve",
+  "overrides": [
+    {
+      "files": ["theme-init.js", "preferences.js"],
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": ["index.html", "vi/index.html"],
+      "options": {
+        "embeddedLanguageFormatting": "off"
+      }
+    }
+  ]
+}

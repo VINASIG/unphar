@@ -27,6 +27,8 @@ export default defineConfig(
         Blob: 'readonly',
         File: 'readonly',
         URL: 'readonly',
+        location: 'readonly',
+        navigator: 'readonly',
         crypto: 'readonly',
         HTMLElement: 'readonly',
         HTMLInputElement: 'readonly',

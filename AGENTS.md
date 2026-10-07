@@ -1,30 +1,6 @@
-# Work on VINASIG Unphar
+# Work on unphar
 
-Read `README.md`, `docs/STANDARDS.md`, `docs/BRAND.md` and `docs/TOOLCHAIN.md` before changing this static browser application.
-
-- Preserve unrelated changes and use the existing branch. Commit, push and publish within the user's current authorization.
-- Keep public product copy in reviewed Vietnamese and English. Keep source, technical documentation and commit subjects in English. Answer Vietnamese users in Vietnamese. Use SI agents and Super Intelligence in new VINASIG copy, while preserving official external names and identifiers.
-- Keep plain HTML/CSS/JavaScript and local-only archive processing. Do not add a framework, upload service, account flow, analytics or remote font for routine changes.
-- Use local Space Grotesk, Lucide for interface SVGs and Simple Icons only for needed third-party brand marks. Preserve supplied VINASIG artwork and third-party notices. This product adopts the design system's Bright Playful Minimalism proposal; it does not approve every draft for the organization.
-- Keep both PHAR-to-ZIP and ZIP-to-PHAR flows usable by keyboard and touch. Native details show format limitations and archive contents. Fix wrapping and intrinsic sizing at their source; never conceal page overflow.
-- Never evaluate a PHP stub or deserialize archive metadata. Validate bounds, paths, sizes, compression, CRC32 and supported signatures before publishing a result. Keep memory and decompression limits enforced, recover from errors and prevent overlapping conversions. ZIP conversion cannot restore an original executable PHAR stub.
-- Keep runtime vendor files local and pinned. Strict JSDoc checking applies to `archive.js` and `script.js`; development scripts use TypeScript. Preserve the browser's classic-script loading so a downloaded `dist/` folder can open without a server.
-- Run `npm run check`, `npm test`, `npm run test:php` and `npm run build`. Before publishing UI changes run `npm run test:browser` and inspect actual screenshots. Use all three browser engines in CI. An unavailable local engine is NOT_RUN, not a pass.
-- Include the five standard viewports, 320 px, real breakpoint neighbors, enlarged text, light/dark, normal/reduced motion, keyboard/touch, idle/error/loading/success and long filenames. Capture and open screenshots, scroll through the full page, inspect geometry and retain before evidence in ignored `output/responsive/`.
-- Run `npm run test:performance` for changes affecting loading or processing. Keep comparable lab reports; do not claim field metrics or physical-device validation from emulation.
-- Publish only the allowlisted `dist/` folder after checks pass. Never publish the whole repository or `output/`. Preserve Git history and review the exact staged diff. Verify pushed HEAD, CI and Pages deployment for the same revision.
-- Read `LICENSE_STATUS.md` before promising reuse rights. Report PASS, FAIL, NOT_RUN or NOT_APPLICABLE with actual evidence. A static standards-integrity check does not prove fresh Codex skill discovery or an independent SI-agent trial.
-
-## Canonical domain
-
-The owner authorized the custom-domain migration on 4 October 2026. Publish this site at https://unphar.vinasig.io.vn/ with an origin-root base. Preserve that domain in canonical/social metadata, sitemap, robots, package homepage, preview and browser assertions. Keep GitHub repository/source links intact. Read docs/DOMAIN.md. GitHub Actions deploys through the repository Pages custom-domain setting; a CNAME file alone does not configure an Actions deployment.
-
-## Language and appearance
-
-Read `docs/LOCALIZATION.md`. Both locales must include navigation, accessible names, validation, loading and result copy. Keep native reciprocal language links and locale metadata. Preserve technical identifiers, code and user content. Only the optional light or dark preference uses `vinasig-theme` storage. Never save or send measurements, files or generator content. Verify both locales and themes before publishing.
-## Shared header and footer
-
-Read docs/SITE_CHROME.md before header or footer changes. Keep shared chrome consistent and run npm run test:chrome.
+Read [the complete project context](docs/PROJECT_ENTRYPOINT.md) before implementation work, together with every required guide linked there. It preserves the project-specific scope, ownership, source map, deployment and verification requirements. Apply the shared policy snapshot below; project guidance adds facts and does not replace the common acceptance contract.
 
 <!-- VINASIG STANDARDS BEGIN -->
 ## VINASIG SI agent standards 0.1.0
@@ -35,9 +11,15 @@ Active profile is `web-static`. Read `.vinasig/standards/profiles/web-static.md`
 
 Use `$vinasig-workflow` for implementation work and `$vinasig-dependencies` when adding or upgrading dependencies. Report PASS, FAIL, NOT_RUN or NOT_APPLICABLE with evidence and reasons. Commit, push and publish only within the task authorization.
 
-For VINASIG project publication or changed public facts, apply CORE-009 and `templates/project-publication.md`. Synchronize affected repository details, website inventory and both org profile languages within current authorization. The public org profile is `VINASIG/.github/profile/README.md`. Report pending destinations.
+For VINASIG project creation, publication or changed public facts, apply CORE-009 and `templates/project-publication.md`. Set Repo details for every new GitHub repository immediately with a description, verified website or README homepage, and relevant topics. Read saved GitHub values back. Synchronize affected website inventory and both org profile languages within current authorization. The public org profile is `VINASIG/.github/profile/README.md`. Report pending destinations.
 
 For license selection, imported material or distribution changes read `policies/licensing.md` and `LICENSES.md` inside the snapshot. LIC-001 through LIC-004 require purpose-based selection, authority and dependency review, separate documentation/font/data/brand rights, consistent SPDX metadata and delivery evidence. Importing this standard does not relicense the host project.
+
+For visible changes and new interfaces, apply WEB-010 and read templates/web/ui-contract.md first. Reproduce the exact symptom and inventory every mode, boundary, error, short/long output and timer state. Map each reported defect to a regression and opened before/after image. Use inspectUiContract where applicable. Check real Pause/Resume with the pointer on the control, local field errors, card/icon gaps, fitted output, adjacent actions and visible depleted progress. Passing initial-mode tests or merely saving screenshots does not approve the UI. Repeat affected live states before claiming completion.
+
+For ecosystem preferences apply WEB-011 and read templates/web/shared-preferences.md. Default to system appearance and browser language. Persist only explicit theme/language choices in allowlisted Secure parent-domain cookies; preserve active work when another tab changes language. Adopt the reviewed shared runtime and test real cross-subdomain behavior and blocked storage.
+
+For a new public VINASIG website handoff, launch, host change or DNS/discovery repair, apply SEARCH-003 and read templates/web/domain-discovery.md in the snapshot. Propose missing Cloudflare DNS and Search Console setup with exact fields/URLs. Retain working setup; separate submitted, fetched and indexed. Execute account changes only within existing authorization.
 
 For UI changes read `policies/web.md` inside the snapshot. Apply LANG-004/LANG-005 to all visible copy and locales. WEB-001 requires original transparent header logos matched to the actual surface, without a padded or rounded logo card, linking to https://vinasig.io.vn/. Run inspectHeaderBrand and exercise the logo link on local and deployed pages. WEB-009 requires the shared header/footer contract for new projects too. Read templates/web/site-chrome.md, reuse the reviewed design-system source and run inspectSiteChrome on all layout routes/locales/themes. WEB-008 requires a full control inventory and styled initial/open/scrolled states, including popup scrollbars, checkbox/radio, search clear, range/progress parts and disclosure indicators. Use the reviewed control-surfaces CSS, preserve native form/keyboard/touch behavior and test forced colors. Run inspectControlSurfaces and inspectControlIndicators with nonzero expected counts. Ordinary dropdown indicators need a measured 16 px inner trailing inset, a 12 px value gap and their declared SVG size. Open before/after and deployed screenshots. Use `$vinasig-responsive` for layout/accessibility, `$vinasig-motion` for movement, `$vinasig-search` for SEO/AEO/GEO, `$vinasig-performance` for speed, and `$vinasig-agent-readiness` for browser-agent tasks. Space Grotesk, Lucide and Simple Icons follow their separate roles.
 
